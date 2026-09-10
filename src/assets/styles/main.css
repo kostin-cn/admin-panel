@@ -1,0 +1,52 @@
+/* src/assets/main.css */
+
+/* Заглушки для статичного аналізатора WebStorm (PrimeVue v4 dynamic variables) */
+:root {
+  --p-surface-0: initial;
+  --p-surface-100: initial;
+  --p-surface-200: initial;
+  --p-surface-400: initial;
+  --p-surface-500: initial;
+  --p-surface-700: initial;
+  --p-surface-800: initial;
+  --p-surface-900: initial;
+  --p-surface-950: initial;
+  --p-primary-400: initial;
+  --p-primary-500: initial;
+  --p-primary-contrast: initial;
+  --p-font-family: initial;
+  --p-green-500: initial;
+}
+
+/* Світла тема: зв'язуємо змінні PrimeVue v4 з PrimeFlex */
+:root {
+  --surface-ground: var(--p-surface-100);
+  --surface-card: var(--p-surface-0);
+  --surface-overlay: var(--p-surface-0);
+  --surface-border: var(--p-surface-200);
+  --surface-hover: var(--p-surface-100);
+  --text-color: var(--p-surface-700);
+  --text-color-secondary: var(--p-surface-500);
+  --primary-color: var(--p-primary-500);
+  --primary-color-text: var(--p-primary-contrast);
+}
+
+/* Темна тема */
+.app-dark {
+  --surface-ground: var(--p-surface-950);
+  --surface-card: var(--p-surface-900);
+  --surface-overlay: var(--p-surface-900);
+  --surface-border: var(--p-surface-700);
+  --surface-hover: var(--p-surface-800);
+  --text-color: var(--p-surface-0);
+  --text-color-secondary: var(--p-surface-400);
+  --primary-color: var(--p-primary-400);
+}
+
+/* Базове скидання для сторінки */
+body {
+  margin: 0;
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+  font-family: var(--p-font-family, system-ui, -apple-system, sans-serif);
+}
