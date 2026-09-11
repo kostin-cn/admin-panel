@@ -115,7 +115,7 @@ const onSubmit = handleSubmit(async (values) => {
     name: values.name.trim(),
     email: values.email.trim(),
     role: values.role,
-    allowedCategoryIds: values.role === Role.ADMIN ? [] : values.allowedCategoryIds as string[],
+    allowedCategoryIds: values.role === Role.ADMIN ? [] : values.allowedCategoryIds as number[],
   }
 
   if (editingUser.value?.id) {

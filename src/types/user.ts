@@ -8,7 +8,7 @@ export interface User {
   email: string;
   name: string;
   role: Role;
-  allowedCategoryIds: string[]; // Порожній масив для admin, список ID категорій для manager
+  allowedCategoryIds: number[]; // Порожній масив для admin, список ID категорій для manager
   createdAt: string;
 }
 
