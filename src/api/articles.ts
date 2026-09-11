@@ -7,11 +7,11 @@ export const articlesApi = {
   getByCategorySlug: (categorySlug: string) =>
     api.get<Article[]>(`/articles?category=${categorySlug}`).then(res => res.data),
 
-  getById: (id: string) => api.get<Article>(`/articles/${id}`).then(res => res.data),
+  getById: (id: number) => api.get<Article>(`/articles/${id}`).then(res => res.data),
 
   create: (data: CreateArticleInput) => api.post<Article>('/articles', data).then(res => res.data),
 
-  update: (id: string, data: Partial<Article>) => api.put<Article>(`/articles/${id}`, data).then(res => res.data),
+  update: (id: number, data: Partial<Article>) => api.put<Article>(`/articles/${id}`, data).then(res => res.data),
 
-  delete: (id: string) => api.delete<{ success: boolean }>(`/articles/${id}`).then(res => res.data)
+  delete: (id: number) => api.delete<{ success: boolean }>(`/articles/${id}`).then(res => res.data)
 };

@@ -13,8 +13,8 @@ export function useCategoryActions() {
     entityName: 'категорію',
     getItemDisplayTitle: (category) => category.title,
     createFn: (payload) => categoryStore.createCategory(payload),
-    updateFn: (id, payload) => categoryStore.updateCategory(id as string, payload),
-    deleteFn: (id) => categoryStore.deleteCategory(id as string),
+    updateFn: (id, payload) => categoryStore.updateCategory(id, payload),
+    deleteFn: (id) => categoryStore.deleteCategory(id),
     getError: () => categoryStore.error,
 
     isModalOpen: isCategoryModalOpen,

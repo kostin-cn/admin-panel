@@ -55,7 +55,7 @@ const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig):
           (catId) => mockData.categories[catId]?.slug === categorySlug
         ) || null : null
 
-        const items = (categorySlug ? Object.values(mockData[resource as keyof MockData] || {}).filter((elem: Article) => elem.categoryId === categoryId) :
+        const items = (categorySlug ? Object.values(mockData[resource as keyof MockData] || {}).filter((elem: Article) => elem.categoryId.toString() === categoryId) :
           Object.values(mockData[resource as keyof MockData] || {})) as T;
 
         return {
@@ -112,7 +112,7 @@ const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig):
       // Якщо видаляємо категорію — каскадно видаляємо всі пов'язані статті
       if (resourceKey === 'categories' && mockData.articles) {
         Object.entries(mockData.articles).forEach(([articleId, article]) => {
-          if (article.categoryId === id) delete mockData.articles[articleId];
+          if (article.categoryId.toString() === id) delete mockData.articles[articleId];
         });
       }
 

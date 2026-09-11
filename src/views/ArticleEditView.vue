@@ -93,7 +93,7 @@ onMounted(async () => {
   }
 
   if (isEditing.value && articleId.value) {
-    await articleStore.fetchArticleById(articleId.value);
+    await articleStore.fetchArticleById(Number(articleId.value));
     const article = articleStore.currentArticle;
     if (article) {
       resetForm({
@@ -115,13 +115,13 @@ onMounted(async () => {
 const onSubmit = handleSubmit(async (values) => {
   const payload = {
     ...values,
-    categoryId: values.categoryId as string,
+    categoryId: Number(values.categoryId),
     slug: generateSlug(values.title),
     authorId: '1', // Можна підтягувати з authStore
   };
 
   if (isEditing.value && articleId.value) {
-    await articleStore.updateArticle(articleId.value, payload);
+    await articleStore.updateArticle(Number(articleId.value), payload);
   } else {
     await articleStore.createArticle(payload);
   }
@@ -135,7 +135,7 @@ const handleDelete = async () => {
 
   isDeleting.value = true;
   try {
-    await articleStore.deleteArticle(articleId.value);
+    await articleStore.deleteArticle(Number(articleId.value));
     isDeleteModalOpen.value = false;
     router.push('/articles');
   } finally {

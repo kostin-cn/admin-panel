@@ -1,6 +1,6 @@
 export interface Article {
-  id: string;
-  categoryId: string;
+  id: number;
+  categoryId: number;
   title: string;
   slug: string;
   imageUrl: string;

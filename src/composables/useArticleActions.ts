@@ -13,8 +13,8 @@ export function useArticleActions() {
     entityName: 'статтю',
     getItemDisplayTitle: (article) => article.title,
     createFn: (payload) => articleStore.createArticle(payload),
-    updateFn: (id, payload) => articleStore.updateArticle(id as string, payload),
-    deleteFn: (id) => articleStore.deleteArticle(id as string),
+    updateFn: (id, payload) => articleStore.updateArticle(id, payload),
+    deleteFn: (id) => articleStore.deleteArticle(id),
     getError: () => articleStore.error,
 
     isModalOpen: isArticleModalOpen,

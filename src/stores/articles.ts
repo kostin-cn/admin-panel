@@ -33,7 +33,7 @@ export const useArticleStore = defineStore('articles', () => {
     }
   }
 
-  async function fetchArticleById(id: string) {
+  async function fetchArticleById(id: number) {
     isLoading.value = true
     error.value = null
     try {
@@ -56,7 +56,7 @@ export const useArticleStore = defineStore('articles', () => {
     }
   }
 
-  async function updateArticle(id: string, payload: Partial<Article>) {
+  async function updateArticle(id: number, payload: Partial<Article>) {
     try {
       const updatedArticle = await articlesApi.update(id, payload)
       const index = articles.value.findIndex(t => t.id === id)
@@ -69,7 +69,7 @@ export const useArticleStore = defineStore('articles', () => {
     }
   }
 
-  async function deleteArticle(id: string) {
+  async function deleteArticle(id: number) {
     try {
       await articlesApi.delete(id)
       articles.value = articles.value.filter(t => t.id !== id)

@@ -22,7 +22,7 @@ export const useCategoryStore = defineStore('categories', () => {
     }
   }
 
-  async function fetchCategoryById(id: string) {
+  async function fetchCategoryById(id: number) {
     isLoading.value = true
     error.value = null
     try {
@@ -45,7 +45,7 @@ export const useCategoryStore = defineStore('categories', () => {
     }
   }
 
-  async function updateCategory(id: string, payload: Partial<Category>) {
+  async function updateCategory(id: number, payload: Partial<Category>) {
     try {
       const updated = await categoriesApi.update(id, payload)
 
@@ -61,7 +61,7 @@ export const useCategoryStore = defineStore('categories', () => {
     }
   }
 
-  async function deleteCategory(id: string) {
+  async function deleteCategory(id: number) {
     try {
       await categoriesApi.delete(id)
       categories.value = categories.value.filter(p => p.id !== id)
