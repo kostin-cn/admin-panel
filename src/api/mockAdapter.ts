@@ -20,7 +20,7 @@ const saveData = (data: MockData): void => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 };
 
-let mockData: MockData = loadData();
+const mockData: MockData = loadData();
 
 const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig): Promise<AxiosResponse<T>> => {
   const { method, url, data } = config;
@@ -28,9 +28,8 @@ const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig):
 
   await delay(randomDelay);
 
-  const [pathname, queryString] = (url || '').split('?');
+  const [pathname] = (url || '').split('?');
   const urlParts = pathname?.split('/').filter(Boolean) || [];
-  const queryParams = new URLSearchParams(queryString);
   const resource = urlParts[0];
   const id = urlParts[1] || null;
 
@@ -50,13 +49,7 @@ const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig):
           config,
         };
       } else {
-        const categorySlug = queryParams.get('category') || null
-        const categoryId = categorySlug ? Object.keys(mockData.categories).find(
-          (catId) => mockData.categories[catId]?.slug === categorySlug
-        ) || null : null
-
-        const items = (categorySlug ? Object.values(mockData[resource as keyof MockData] || {}).filter((elem: Article) => elem.categoryId.toString() === categoryId) :
-          Object.values(mockData[resource as keyof MockData] || {})) as T;
+        const items = Object.values(mockData[resource as keyof MockData] || {}) as T;
 
         return {
           data: items,
@@ -132,7 +125,3 @@ const mockAdapter: AxiosAdapter = async <T>(config: InternalAxiosRequestConfig):
 };
 
 export default mockAdapter;
-
-export const reloadMockData = (): void => {
-  mockData = loadData();
-};

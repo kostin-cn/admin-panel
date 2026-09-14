@@ -21,18 +21,6 @@ export const useArticleStore = defineStore('articles', () => {
     }
   }
 
-  async function fetchArticlesByCategory(categorySlug: string) {
-    isLoading.value = true
-    error.value = null
-    try {
-      articles.value = await articlesApi.getByCategorySlug(categorySlug)
-    } catch (err) {
-      error.value = err instanceof Error ? err.message : 'Помилка завантаження статей'
-    } finally {
-      isLoading.value = false
-    }
-  }
-
   async function fetchArticleById(id: number) {
     isLoading.value = true
     error.value = null
@@ -85,7 +73,6 @@ export const useArticleStore = defineStore('articles', () => {
     isLoading,
     error,
     fetchAllArticles,
-    fetchArticlesByCategory,
     fetchArticleById,
     createArticle,
     updateArticle,

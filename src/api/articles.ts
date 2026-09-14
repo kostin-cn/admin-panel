@@ -4,9 +4,6 @@ import type {Article, CreateArticleInput} from '@/types';
 export const articlesApi = {
   getAll: () => api.get<Article[]>('/articles').then(res => res.data),
 
-  getByCategorySlug: (categorySlug: string) =>
-    api.get<Article[]>(`/articles?category=${categorySlug}`).then(res => res.data),
-
   getById: (id: number) => api.get<Article>(`/articles/${id}`).then(res => res.data),
 
   create: (data: CreateArticleInput) => api.post<Article>('/articles', data).then(res => res.data),
